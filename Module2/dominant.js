@@ -1,25 +1,44 @@
 const SCRIPTS = [
     {
       name: "Latin",
-      ranges: [[65, 91], [97, 123], [192, 256]], // ASCII letters, some extended
+      ranges: [
+        [65, 91],     // A–Z
+        [97, 123],    // a–z
+        [192, 383],   // Latin-1 Supplement
+        [384, 591],   // Latin Extended-A/B
+      ],
       direction: "ltr",
     },
     {
       name: "Cyrillic",
-      ranges: [[1024, 1280]], // Basic Cyrillic range
+      ranges: [
+        [1024, 1328],  // Basic Cyrillic + supplement
+        [11744, 11776] // Cyrillic Extended
+      ],
       direction: "ltr",
     },
     {
       name: "Arabic",
-      ranges: [[1424, 1536], [1611, 1614]], // Basic Arabic range
+      ranges: [
+        [1536, 1792],   // Arabic
+        [1872, 1920],   // Arabic Extended-A
+        [2208, 2304],   // Arabic Extended-B
+        [64336, 65024], // Arabic Presentation Forms-A
+        [65136, 65280], // Arabic Presentation Forms-B
+      ],
       direction: "rtl",
     },
     {
       name: "Hangul",
-      ranges: [[44032, 55204]], // Korean script
+      ranges: [
+        [44032, 55204], // Hangul Syllables
+        [12592, 12688], // Hangul Jamo
+        [127488, 127488 + 64], // Small Hangul block
+      ],
       direction: "ltr",
     },
   ];
+  
   
 
   function countBy(items, groupName) {
