@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain</title>
+</head>
+
+<body>
+    <h1>Mountains</h1>
+
+    <div id="mountains" style="font-size: 30px;"></div>
+
+    <script>
+        const MOUNTAINS = [
+            { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+            { name: "Everest", height: 8848, place: "Nepal" },
+            { name: "Mount Fuji", height: 3776, place: "Japan" },
+            { name: "Vaalserberg", height: 323, place: "Netherlands" },
+            { name: "Denali", height: 6168, place: "United States" },
+            { name: "Popocatepetl", height: 5465, place: "Mexico" },
+            { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+        ];
+
+        function createTable(data) {
+            let table = document.createElement("table")
+            //get the keys of just the first array element
+            let fields = Object.keys(data[0]);
+            // Build header row
+            let headRow = document.createElement("tr");
+            for (const field of fields) {
+                let headCell = document.createElement("th");
+                headCell.appendChild(document.createTextNode(field));
+                headRow.appendChild(headCell);
+            }
+            table.appendChild(headRow);
+
+            // Build data rows
+            for (const object of data) {
+                let row = document.createElement("tr");
+                for (const field of fields) {
+                    let cell = document.createElement("td");
+                    cell.appendChild(document.createTextNode(object[field]));
+                    if (typeof object[field] === "number") {
+                        cell.style.textAlign = "right";
+                    }
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+
+            return table;
+        }
+
+        document.querySelector("#mountains")
+            .appendChild(createTable(MOUNTAINS));
+        // Your code here
+    </script>
+</body>
+
+</html>
